@@ -3,6 +3,7 @@
 {% block content %}
 <main class="home-page">
 	<p>Number of posts: {{ collections.posts.length }}</p>
+    <pre>{{ collections.posts | dump }}</pre>
     {% if collections.posts | length %}
     <!-- Feature the first post -->
     <section class="featured-post">
