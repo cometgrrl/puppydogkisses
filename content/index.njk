@@ -5,24 +5,39 @@ eleventyNavigation:
   order: 1
 numberOfLatestPostsToShow: 3
 ---
-{% set postsCount = collections.posts | length %}
-{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
+{% set latestPosts = collections.posts | slice(0, numberOfLatestPostsToShow) %}
+{% set morePosts = collections.posts.length - numberOfLatestPostsToShow %}
 
-{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
-{% set postslistCounter = postsCount %}
-{% include "postslist.njk" %}
-
-{% set morePosts = postsCount - numberOfLatestPostsToShow %}
-{% if morePosts > 0 %}
-<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/">the archive</a>.</p>
-{% endif %}
-
-{# List every content page in the project #}
-{#
-<ul>
-	{%- for entry in collections.all %}
-	<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
-	{%- endfor %}
-</ul>
-#}
+<main class="home-page">
+    <section class="featured-post">
+        {% for post in latestPosts %}
+        <article>
+            <header>
+                <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+                <p class="post-date">{{ post.date | date("F d, Y") }}</p>
+            </header>
+            <p>{{ post.data.description | truncate(150) }}</p>
+            <footer>
+                <a href="{{ post.url }}" class="read-more">Read more</a>
+            </footer>
+        </article>
+        {% if loop.first %}{% break %}{% endif %}
+        {% endfor %}
+    </section>
+    
+    <section class="recent-posts">
+        <h3>More Posts</h3>
+        {% for post in latestPosts | slice(1) %}
+        <article>
+            <header>
+                <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
+                <p class="post-date">{{ post.date | date("F d, Y") }}</p>
+            </header>
+        </article>
+        {% endfor %}
+    </section>
+    
+    {% if morePosts > 0 %}
+    <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/">the archive</a>.</p>
+    {% endif %}
+</main>
