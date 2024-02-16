@@ -1,34 +1,15 @@
-{% extends "layouts/base.njk" %}
+---
+layout: layouts/base.njk
+---
 
 {% block content %}
-<main class="home-page">
-	<p>Number of posts: {{ collections.posts.length }}</p>
-    <pre>{{ collections.posts | dump }}</pre>
-    {% if collections.posts | length %}
-    <!-- Feature the first post -->
-    <section class="featured-post">
-        {% set post = collections.posts[0] %}
+    {% for post in collections.posts %}
         <article>
+            <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}">
             <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-            <p class="post-date">{{ post.date | date("F d, Y") }}</p>
-            <!-- Additional post details -->
+            <p>{{ post.date | readableDate("LLLL d, yyyy") }}</p>
+            <p>{{ post.data.description }}</p>
         </article>
-    </section>
-    {% endif %}
-
-    <!-- List subsequent posts -->
-    <section class="recent-posts">
-        <h3>Recent Posts</h3>
-        <ul>
-            {% for post in collections.posts | slice(1, numberOfLatestPostsToShow) %}
-            <li>
-                <article>
-                    <h4><a href="{{ post.url }}">{{ post.data.title }}</a></h4>
-                    <p class="post-date">{{ post.date | date("F d, Y") }}</p>
-                </article>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-</main>
+    {% endfor %}
 {% endblock %}
+
