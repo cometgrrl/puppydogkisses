@@ -137,6 +137,6 @@ module.exports = function (eleventyConfig) {
 	};
 	// Collection based on a directory
 	eleventyConfig.addCollection("posts", function (collectionApi) {
-		return collectionApi.getFilteredByGlob("./posts/*.md");
+		return collectionApi.getFilteredByGlob("./blog/*.md");
 	});
 };
