@@ -19,7 +19,7 @@ permalink: /tags/{{ tag | slugify }}/
 {% include "postslist.njk" %}
 
 <div class="posts-grid">
-    {% set sortedPosts = collections.Roxy | sort(attribute='date') | reverse %}
+    {% set sortedPosts = collections[tag] | sort(attribute='date') | reverse %}
     {% for post in sortedPosts %}
         <article>
             <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" class="post-image"> 
