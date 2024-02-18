@@ -45,11 +45,10 @@
 
 html,
 body {
+	font-family: "Inter", sans-serif; /* Choose a similar font */
+	color: #333;
+	margin: 0;
 	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
 }
 html {
 	overflow-y: scroll;
@@ -80,6 +79,10 @@ li {
 	line-height: 1.5;
 }
 
+a {
+	text-decoration: none;
+}
+
 a[href] {
 	color: var(--text-color-link);
 }
@@ -94,13 +97,17 @@ a[href]:active {
 main {
 	padding: 1rem;
 }
+
 main :first-child {
 	margin-top: 0;
 }
 
 header {
-	border-bottom: 1px dashed var(--color-gray-20);
+	/* background-color: #bf5da8; /* Adjust to match puppydogkisses.com */
+	padding: 20px;
+	text-align: center;
 }
+
 header:after {
 	content: "";
 	display: table;
@@ -144,16 +151,8 @@ code {
 	word-break: break-all;
 }
 
-/* Header */
-header {
-	display: flex;
-	gap: 1em 0.5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
-}
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 4em; /* 16px /16 */
 	font-weight: 700;
 	margin-right: 2em;
 }
@@ -163,10 +162,10 @@ header {
 
 /* Nav */
 .nav {
-	display: flex;
 	padding: 0;
 	margin: 0;
 	list-style: none;
+	text-align: center;
 }
 .nav-item {
 	display: inline-block;
@@ -191,16 +190,19 @@ header {
 }
 
 .posts-grid article {
+	background-color: #ebebeb;
+	border-radius: 15px;
 	padding: 0px;
+	max-width: 600px;
+	overflow: hidden;
 }
 /* Sets the image width to 100% of its parent container, with a maximum width of 300px */
 .post-image {
-	border-radius: 10px;
+	border-radius: 15px 15px 0 0;
 	overflow: hidden; /* Keeps child elements within the rounded corners */
 	border: 1px solid #ccc;
 	padding: 0px;
 	width: 100%;
-	max-width: 600px;
 	height: auto; /* Keeps the aspect ratio of the image */
 }
 
@@ -260,11 +262,8 @@ header {
 
 /* Tags */
 .post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
 	text-transform: capitalize;
-	font-style: italic;
+	margin-left: 15 px;
 }
 .postlist-item > .post-tag {
 	align-self: center;
@@ -287,7 +286,7 @@ header {
 .header-anchor {
 	text-decoration: none;
 	font-style: normal;
-	font-size: 1em;
+	font-size: 2em;
 	margin-left: 0.1em;
 }
 a[href].header-anchor,
