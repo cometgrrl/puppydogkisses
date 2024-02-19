@@ -1,6 +1,6 @@
 /* Defaults */
 :root {
-	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family: "Inter", sans-serif;
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
 		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
 		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
@@ -16,9 +16,9 @@
 	--background-color: #fff;
 
 	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050f;
+	--text-color-link: #000000;
+	--text-color-link-active: #8d099e;
+	--text-color-link-visited: #000000;
 
 	--syntax-tab-size: 2;
 }
@@ -45,8 +45,8 @@
 
 html,
 body {
-	font-family: "Inter", sans-serif; /* Choose a similar font */
-	color: #333;
+	font-family: "Inter", sans-serif;
+	color: #000000;
 	margin: 0;
 	padding: 0;
 }
@@ -72,11 +72,11 @@ p:last-child {
 	margin-bottom: 0;
 }
 p {
-	line-height: 1.5;
+	line-height: 1;
 }
 
 li {
-	line-height: 1.5;
+	line-height: 1;
 }
 
 a {
@@ -103,7 +103,6 @@ main :first-child {
 }
 
 header {
-	/* background-color: #bf5da8; /* Adjust to match puppydogkisses.com */
 	padding: 20px;
 	font-size: 0.5em;
 }
@@ -196,11 +195,16 @@ code {
 	padding: 0px;
 	max-width: 600px;
 	overflow: hidden;
-	padding-left: 20px; /* Adjust as needed */
 }
 
 .posts-grid article h2 {
 	font-size: 3em;
+	padding-left: 30px; /* Indent the title */
+	margin-bottom: 10px; /* Reduce space after the title */
+}
+
+.posts-grid article p {
+	padding-left: 35px; /* Indent the title */
 	margin-bottom: 10px; /* Reduce space after the title */
 }
 
