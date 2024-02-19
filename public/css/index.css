@@ -105,13 +105,14 @@ main :first-child {
 header {
 	/* background-color: #bf5da8; /* Adjust to match puppydogkisses.com */
 	padding: 20px;
-	text-align: center;
+	font-size: 0.5em;
 }
 
 header:after {
 	content: "";
 	display: table;
 	clear: both;
+	padding-bottom: 80px;
 }
 
 .links-nextprev {
@@ -195,8 +196,14 @@ code {
 	padding: 0px;
 	max-width: 600px;
 	overflow: hidden;
+	padding-left: 20px; /* Adjust as needed */
 }
-/* Sets the image width to 100% of its parent container, with a maximum width of 300px */
+
+.posts-grid article h2 {
+	font-size: 3em;
+	margin-bottom: 10px; /* Reduce space after the title */
+}
+
 .post-image {
 	border-radius: 15px 15px 0 0;
 	overflow: hidden; /* Keeps child elements within the rounded corners */
@@ -228,13 +235,13 @@ code {
 
 /* Responsive Adjustment */
 @media screen and (max-width: 768px) {
-	.postlist {
+	.posts-grid {
 		grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
 	}
 }
 
 @media screen and (max-width: 480px) {
-	.postlist {
+	.posts-grid {
 		grid-template-columns: 1fr; /* Single column for very small screens */
 	}
 }
@@ -263,10 +270,6 @@ code {
 /* Tags */
 .post-tag {
 	text-transform: capitalize;
-	margin-left: 15 px;
-}
-.postlist-item > .post-tag {
-	align-self: center;
 }
 
 /* Tags list */
