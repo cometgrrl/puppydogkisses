@@ -104,7 +104,7 @@ main :first-child {
 
 header {
 	padding: 20px;
-	font-size: 0.5em;
+	font-size: 0.3em;
 }
 
 header:after {
@@ -198,14 +198,16 @@ code {
 }
 
 .posts-grid article h2 {
-	font-size: 3em;
+	font-size: 2em;
+	padding-right: 30px;
 	padding-left: 30px; /* Indent the title */
-	margin-bottom: 10px; /* Reduce space after the title */
+	margin-bottom: 20px;
 }
 
 .posts-grid article p {
-	padding-left: 35px; /* Indent the title */
-	margin-bottom: 10px; /* Reduce space after the title */
+	padding-right: 30px;
+	padding-left: 30px; /* Indent the title */
+	margin-bottom: 10px;
 }
 
 .post-image {
