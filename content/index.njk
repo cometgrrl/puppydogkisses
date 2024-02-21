@@ -12,8 +12,7 @@ layout: layouts/base.njk
             <p>
                 {% set tagsWithoutPosts = post.data.tags | reject('equalto', 'posts') %}
                 {% for tag in tagsWithoutPosts %}
-                <a href="/tags/{{ tag | url }}">{{ tag }}</a>
-                {% if not loop.last %}, {% endif %}
+                <a href="/tags/{{ tag | url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>        
         </article>
