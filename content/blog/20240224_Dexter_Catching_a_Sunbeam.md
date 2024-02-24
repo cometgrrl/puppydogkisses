@@ -1,5 +1,5 @@
 ---
-image: "/img/20240224_Dexter_Catching_a_Sunbeam.jpg"
+image: "/img/20240224_Dexter_Catching_a_Sunbeam.jpeg"
 
 title: Catching a Sunbeam
 description: 
