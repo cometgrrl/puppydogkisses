@@ -5,6 +5,6 @@ title: Bath Pic
 description: 
 date: 2024-02-25T15:00:00.000Z
 tags: Indy
-draft: true
+draft: false
 ---
 {% image "./2024025_Indy_Bath_Pic.jpeg", "" %}
