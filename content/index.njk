@@ -10,11 +10,13 @@ layout: layouts/base.njk
             <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" class="post-image">
             <h2>{{ post.data.title }}</h2>
             <p>
-                {% for tag in post.data.tags %}
-                    <a href="/tags/{{ tag | url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                {% set tagsWithoutPosts = post.data.tags | reject('equalto', 'posts') %}
+                {% for tag in tagsWithoutPosts %}
+                <a href="/tags/{{ tag | url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>        
         </article>
     {% endfor %}
 </div>
 {% endblock %}
+
