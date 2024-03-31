@@ -29,7 +29,7 @@ permalink: /tags/{{ tag | slugify }}/
                 {% set tagsWithoutPosts = post.data.tags | reject('equalto', 'posts') %}
                 {% for tag in tagsWithoutPosts %}
                 <a href="/tags/{{ tag | url }}">{{ tag }}</a>
-                {% if not loop.last %}, {% endif %}
+                {% if not loop.last %},{% endif %}
                 {% endfor %}
             </p>     
         </article>
