@@ -1,12 +1,4 @@
 const path = require("path");
-const eleventyImage = require("@11ty/eleventy-img");
-
-function relativeToInputPath(inputPath, relativeFilePath) {
-	let split = inputPath.split("/");
-	split.pop();
-
-	return path.resolve(split.join(path.sep), relativeFilePath);
-}
 
 function isFullUrl(url) {
 	try {
@@ -19,42 +11,22 @@ function isFullUrl(url) {
 
 module.exports = function (eleventyConfig) {
 	// Eleventy Image shortcode
-	// https://www.11ty.dev/docs/plugins/image/
-	eleventyConfig.addAsyncShortcode(
+	// Passthrough <img> shortcode (no preprocessing)
+	eleventyConfig.addShortcode(
 		"image",
-		async function imageShortcode(src, alt, widths, sizes) {
-			// Full list of formats here: https://www.11ty.dev/docs/plugins/image/#output-formats
-			// Warning: Avif can be resource-intensive so take care!
-			let formats = ["avif", "webp", "auto", "jpeg"];
-			let input;
-			if (isFullUrl(src)) {
-				input = src;
-			} else {
-				input = relativeToInputPath(this.page.inputPath, src);
+		function imageShortcode(src, alt) {
+			let finalSrc = src;
+			if (!isFullUrl(src)) {
+				if (src.startsWith("/img/")) {
+					finalSrc = src;
+				} else {
+					const basename = path.basename(src);
+					finalSrc = `/img/${basename}`;
+				}
 			}
 
-			let metadata = await eleventyImage(input, {
-				widths: [1024], // Target width of 1024 pixels
-				formats,
-				outputDir: path.join(eleventyConfig.dir.output, "img"),
-				urlPath: "/img/",
-				filenameFormat: function (id, src, width, format, options) {
-					// Preserve the original file name slug
-					const extension = path.extname(src);
-					const name = path.basename(src, extension);
-					return `${name}.${format}`; // Removed width from the file name to keep the original slug
-				},
-			});
-
-			// TODO loading=eager and fetchpriority=high
-			let imageAttributes = {
-				alt,
-				sizes,
-				loading: "lazy",
-				decoding: "async",
-			};
-
-			return eleventyImage.generateHTML(metadata, imageAttributes);
+			const altText = alt || "";
+			return `<img src="${finalSrc}" alt="${altText}" loading="lazy" decoding="async">`;
 		}
 	);
 };

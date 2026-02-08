@@ -17,6 +17,10 @@ module.exports = function (eleventyConfig) {
 		"./public/": "/",
 		"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
 	});
+	// Passthrough original blog images to /img (no preprocessing).
+	eleventyConfig.addPassthroughCopy({
+		"content/blog/**/*.jpeg": "img",
+	});
 
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
