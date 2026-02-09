@@ -20,13 +20,14 @@ module.exports = function (eleventyConfig) {
 	// Passthrough original blog images to /img (no preprocessing).
 	eleventyConfig.addPassthroughCopy({
 		"content/blog/**/*.jpeg": "img",
+		"content/blog/**/*.jpg": "img",
 	});
 
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
 	// Watch content images for the image pipeline.
-	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg,jpg}");
 
 	// App plugins
 	eleventyConfig.addPlugin(pluginDrafts);
