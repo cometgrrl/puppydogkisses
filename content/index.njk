@@ -7,7 +7,7 @@ layout: layouts/base.njk
     {% set sortedPosts = collections.posts | sort(attribute='date') | reverse %}
     {% for post in sortedPosts %}
         <article>
-            <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" class="post-image">
+            {% image post.data.image, post.data.imageAlt, "(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw", "post-image" %}
             <h2>{{ post.data.title }}</h2>
             <p>
                 {% set tagsWithoutPosts = post.data.tags | reject('equalto', 'posts') %}
@@ -19,4 +19,3 @@ layout: layouts/base.njk
     {% endfor %}
 </div>
 {% endblock %}
-

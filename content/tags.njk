@@ -22,7 +22,7 @@ permalink: /tags/{{ tag | slugify }}/
     {% set sortedPosts = collections[tag] | sort(attribute='date') | reverse %}
     {% for post in sortedPosts %}
         <article>
-            <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" class="post-image"> 
+            {% image post.data.image, post.data.imageAlt, "(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw", "post-image" %}
             <h2>{{ post.data.title }}</h2>
             <p>{{ post.data.description }}</p>
             <p>
